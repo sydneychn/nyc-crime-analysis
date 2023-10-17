@@ -1,6 +1,7 @@
 import pandas as pd
 import math
 
+#Reading csv file
 data = pd.read_csv('cleaneddata.csv')
 print(data.head())
 
