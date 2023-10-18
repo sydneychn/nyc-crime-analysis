@@ -1,6 +1,6 @@
 # nyc-crime-analysis
-#Data Analysis Project - NYC Crime Analysis
-#Problem Statement
+# Data Analysis Project - NYC Crime Analysis
+# Problem Statement
 The issue of crime in New York City is a matter of significant concern due to its impact on the well-being of the residents across the city's boroughs. With a population of approximately 8.4 million residents, it is essential to understand the dynamics of crime in NYC to improve public safety, economic development, and address inequality issues.
 
 This project aims to analyze the dataset of crimes committed in New York City from January to June 2023, focusing on the following aspects:
@@ -12,11 +12,11 @@ Identifying common types of crimes in different boroughs.
 Analyzing geographic clusters of crimes based on latitude and longitude.
 The insights gained from this analysis will help reform policy decisions, enhance public safety, and contribute to a safer environment for the residents of New York City.
 
-#Data Sources
+# Data Sources
 NYPD Arrest Data Year to Date
 NYPD Arrests Data Historic
 
-#Data Cleaning/Processing
+# Data Cleaning/Processing
 To prepare the dataset for analysis, the following data cleaning and processing steps were performed:
 
 Removed rows with null values in the crime description and crime type columns.
@@ -28,7 +28,7 @@ Converted latitude and longitude into floats for ease of analysis.
 Grouped all "HISPANICS" together under "PERP_RACE" for generality.
 The cleaned data was saved as a new CSV file for further analysis.
 
-#Exploratory Data Analysis (EDA)
+# Exploratory Data Analysis (EDA)
 An exploratory data analysis was conducted to understand the dataset better and to determine the features relevant for analysis. Key findings from the EDA phase include:
 
 The dataset contains a total of 112,105 rows.
@@ -36,7 +36,7 @@ Nine features were selected for EDA, including ARREST_DATE, PD_DESC, OFNS_DESC, 
 Certain features, including ARREST_KEY, PD_CD, KY_CD, LAW_CODE, LAW_CAT_CD, ARREST_PRECINCT, and JURISDICTION_CODE, were excluded from the analysis for the time being.
 The dataset covers the period from January 2023 to June 2023, spanning five months.
 
-#Project Goals
+# Project Goals
 The primary goals of this data analysis project are as follows:
 
 To provide insights and trends that can inform policy decisions, enhance public safety, and contribute to a safer environment for the residents of New York City.
