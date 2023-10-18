@@ -13,8 +13,8 @@ Analyzing geographic clusters of crimes based on latitude and longitude.
 The insights gained from this analysis will help reform policy decisions, enhance public safety, and contribute to a safer environment for the residents of New York City.
 
 # Data Sources
-NYPD Arrest Data Year to Date
-NYPD Arrests Data Historic
+NYPD Arrest Data Year to Date - https://catalog.data.gov/dataset/nypd-arrest-data-year-to-date
+NYPD Arrests Data Historic - https://catalog.data.gov/dataset/nypd-arrests-data-historic
 
 # Data Cleaning/Processing
 To prepare the dataset for analysis, the following data cleaning and processing steps were performed:
@@ -30,10 +30,24 @@ The cleaned data was saved as a new CSV file for further analysis.
 
 # Exploratory Data Analysis (EDA)
 An exploratory data analysis was conducted to understand the dataset better and to determine the features relevant for analysis. Key findings from the EDA phase include:
-
 The dataset contains a total of 112,105 rows.
-Nine features were selected for EDA, including ARREST_DATE, PD_DESC, OFNS_DESC, ARREST_BORO, AGE_GROUP, PERP_SEX, PERP_RACE, Latitude, and Longitude.
-Certain features, including ARREST_KEY, PD_CD, KY_CD, LAW_CODE, LAW_CAT_CD, ARREST_PRECINCT, and JURISDICTION_CODE, were excluded from the analysis for the time being.
+Nine features were selected for EDA, including ARREST_DATE, 
+PD_DESC, 
+OFNS_DESC, 
+ARREST_BORO, 
+AGE_GROUP, 
+PERP_SEX, 
+PERP_RACE, 
+Latitude, and 
+Longitude.
+Certain features, including 
+ARREST_KEY, 
+PD_CD, 
+KY_CD, 
+LAW_CODE, 
+LAW_CAT_CD, 
+ARREST_PRECINCT, and 
+JURISDICTION_CODE, were excluded from the analysis for the time being.
 The dataset covers the period from January 2023 to June 2023, spanning five months.
 
 # Project Goals
