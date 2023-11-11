@@ -48,7 +48,7 @@ age_group_labels = {
     1: '18-24',
     2: '25-44',
     3: '45-64',
-    4: '65+'
+    4: '65+' 
 }
 #Create scatter plot with different colors for each race
 for label in set(predictions):
@@ -95,5 +95,6 @@ plt.title('One-Class SVM')
 plt.xlabel('Latitude')
 plt.ylabel('Longitude')
 plt.legend()
+
 plt.show()
 
