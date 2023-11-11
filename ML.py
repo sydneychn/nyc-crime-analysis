@@ -95,6 +95,5 @@ plt.title('One-Class SVM')
 plt.xlabel('Latitude')
 plt.ylabel('Longitude')
 plt.legend()
-
 plt.show()
 
