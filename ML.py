@@ -1,13 +1,12 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import OneClassSVM
-from sklearn.metrics import confusion_matrix, classification_report
+from sklearn.linear_model import LinearRegression
+from datetime import datetime
 def sklearn_KNN(X_train,X_test,Y_train,k):
     model = KNeighborsClassifier(n_neighbors=k)
     model.fit(X_train,Y_train)
@@ -74,7 +73,7 @@ plt.show()
 X = data[['Latitude','Longitude']]
 X.dropna(inplace=True)
 X = X[(X['Latitude'] != 0) & (X['Longitude'] != 0)]
-
+X = X.sample(1000)
 
 X_train, X_test = train_test_split(X, test_size=0.2, random_state=42)
 
@@ -97,3 +96,26 @@ plt.ylabel('Longitude')
 plt.legend()
 plt.show()
 
+#Logistic Regression
+csvFile = pd.read_csv('NYPD_Arrest_Data__Year_to_Date_.csv')
+
+csvFile['ARREST_DATE'] = pd.to_datetime(csvFile['ARREST_DATE']).dt.date
+daily_crime_counts = csvFile.groupby('ARREST_DATE').size().reset_index(name='NUM_OF_CRIMES')
+
+x = pd.to_datetime(daily_crime_counts['ARREST_DATE']).map(lambda x: x.toordinal()).values.reshape(-1,1)
+y = daily_crime_counts['NUM_OF_CRIMES']
+
+X_train, X_test, y_train, y_test = train_test_split(x, y)
+
+linreg = LinearRegression()
+linreg.fit(X_train, y_train)
+predictions = linreg.predict(X_test)
+
+X_test_dates = [datetime.fromordinal(int(date)) for date in X_test.flatten()]
+plt.scatter(X_test_dates, y_test, color='black', label='Values')
+plt.plot(X_test_dates, predictions, color='red', linewidth=3, label='Line of Best Fit')
+plt.xlabel('Dates')
+plt.ylabel('Number of Crimes')
+plt.legend()
+plt.title('Linear Regression: Number of Crimes Based on Date')
+plt.show()
