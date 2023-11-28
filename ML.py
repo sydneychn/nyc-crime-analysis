@@ -25,6 +25,7 @@ Y_train = knownRace['PERP_RACE'].to_numpy()
 k = 5
 print(len(X_test))
 
+ 
 # Label encoding for Age Group and Crime Description
 age_group_encoder = LabelEncoder()
 ofns_desc_encoder = LabelEncoder()
