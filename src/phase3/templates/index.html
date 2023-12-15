@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phase 3 - Algorithm Selector</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        .chi_result {
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* dark mode*/
+        body.dark-mode {
+        background-color: #333;
+        color: #fff;
+        }
+
+        body.dark-mode .container {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode h1, body.dark-mode h2 {
+            color: #fff;
+        }
+
+        body.dark-mode p {
+            color: #ccc;
+        }
+
+        body.dark-mode label {
+            color: #fff;
+        }
+
+        body.dark-mode input,body.dark-mode select {
+            background-color: #555;
+            color: #fff;
+            border: 1px solid #444;
+        }
+
+        form button {
+            font-family: 'Trebuchet MS', sans-serif;
+            margin-bottom: 10px; /* Adjust the value to your preference */
+        }
+    </style>
+</head>
+<body>
+    <div class="description">
+        <div class="container">
+            <h1>Phase 3 - Plot your Crime Data!</h1>
+            <h2>Choose a NYPD CSV file and select an algorithm to analyze the data.</h2>
+            <form method="post" enctype="multipart/form-data">
+                <label for="file">Choose CSV file:</label>
+                <input type="file" name="file" accept=".csv" required>
+                <label for="algorithm">Choose Algorithm:</label>
+                <select name="algorithm" required>
+                    <option value="knn">KNN</option>
+                    <option value="one_class_svm">One-Class SVM</option>
+                    <option value="linear_reg">Linear Regression</option>
+                    <option value="svm">SVM</option>
+                    <option value="kmeans">Kmeans</option>
+                    <option value="chi_square">Chi-Square</option>
+                </select>
+                <button type="submit">Show Me!</button>
+            </form>
+
+            {% if chi_result %}
+            <div class="chi_result"> 
+                <h2>Chi-Square Result</h2>
+                <pre>{{ chi_result | safe }}</pre>
+            </div>
+            {% endif %}
+
+            <button onclick="toggleDarkMode()" data-toggle-dark-mode>
+                Toggle Dark Mode
+            </button>
+            
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    // Check the current mode from local storage
+                    const isDarkMode = localStorage.getItem("darkMode") === "true";
+            
+                    // Set the initial mode
+                    setDarkMode(isDarkMode);
+            
+                    // Add click event listener to the "Toggle Dark Mode" button
+                    document.querySelector("button[data-toggle-dark-mode]").addEventListener("click", function () {
+                        const body = document.body;
+                        const isDarkMode = body.classList.contains('dark-mode');
+            
+                        // Toggle the dark mode class
+                        body.classList.toggle('dark-mode', !isDarkMode);
+            
+                        // Save the current mode to local storage
+                        localStorage.setItem("darkMode", !isDarkMode);
+                    });
+                });
+            
+                function setDarkMode(isDarkMode) {
+                    const body = document.body;
+                    body.classList.toggle('dark-mode', isDarkMode);
+                }
+            </script>
+        </div>
+    </div>
+
+    <div class="description">
+        <div class="container">
+            <h1>How To Use Our Product</h1>
+            <p>1. Choose an NYPD formatted CSV dataset from your device.</p>
+            <p>2. Select an algorithm you would like to apply.</p>
+            <p>3. Click the "Show Me!" button.</p>
+            <p><b><i>Note: Some algorithms may take some time to ouput your data.</i></b></p>
+            
+        </div>
+        <div class="container">
+            <h1>The Purpose</h1>
+            <p>The issue of crime in New York City is a matter of significant concern, because of the extensive impact it has on the well-being of the residents residing across the boroughs of the city. Given the large population of approximately 8.4 million residents in NYC as of April 1, 2021 (NYC.gov), it is imperative to prioritize efforts to improve the safety and overall quality of life within the city.
+            </p>
+            <h3>How do we change that?</h3>
+            <p>Through thorough analysis of this data, we can provide insights/trends that can reform policy decisions, enhance public safety, and contribute to a safer environment for the residents of NYC. Reformed policy decisions can be used to change or enact more effective crime prevention and law enforcement strategies. Public safety can be enhanced and in turn reduce fear of crime among residents, improving the quality of life. A safer environment fosters economic growth and increases in population contributing to a flourishing city
+            </p>
+        </div>
+    </div>
+    
+    
+</body>
+</html>
