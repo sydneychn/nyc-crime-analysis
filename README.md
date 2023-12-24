@@ -60,7 +60,7 @@ The dataset covers the period from January 2023 to June 2023, spanning five mont
 - **Chi-Square**: Used Chi-square testing to assess the association between crime categories and gender, providing insights into how gender may impact the occurrence of crimes and informing potential policy reforms.
 
 # Webpage for Crime Dataset
-We developed a user-friendly webpage enabling users to upload a cleaned NYC crime dataset. Users can select from a variety of algorithms to analyze the dataset, generating insightful results. This allows users to gain a deep understanding of crime behavior trends and patterns within the dataset provided.
+We developed a user-friendly webpage enabling users to upload a NYC crime dataset, where it is automatically cleaned using the methods stated previously. Users can select from a variety of algorithms to analyze the dataset, generating insightful results. This allows users to gain a deep understanding of crime behavior trends and patterns within the dataset provided.
 ### To run the webpage on your local machine, follow these quick instructions:
 1. Install Flask on your machine by running the following in the terminal: pip install flask.
 2. Navigate to the src directory (.../src/phase3/).
